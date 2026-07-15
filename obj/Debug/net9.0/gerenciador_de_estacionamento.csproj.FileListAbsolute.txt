@@ -185,3 +185,4 @@ C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\gerenciador_de_estacionamento.pdb
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\gerenciador_de_estacionamento.genruntimeconfig.cache
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\ref\gerenciador_de_estacionamento.dll
+C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\gerenciador_de_estacionamento.sourcelink.json
