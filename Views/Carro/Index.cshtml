@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Gerenciador de Estacionamento";
+}
+
+<form asp-action="CadastroCarro" method="post">
+    <label for="placa">Digite a placa:</label>
+    <input type="text" id="placa" name="placa"/>
+    <button type="submit" class="button">Registrar Carro</button>
+</form>
+<form asp-action="CadastroEntrada" method="post">
+    <button type="submit" class="button">Registrar Entrada</button>
+</form>
+<form asp-action="CadastroSaida" method="post">
+    <button type="submit" class="button">Registrar Saida</button>
+</form>
