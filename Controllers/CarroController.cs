@@ -110,6 +110,9 @@ public IActionResult Calcular(string placa)
         double minutosRestantes = totalMinutos % 60;
         decimal fracoesCobradas = 0;
 
+        Console.WriteLine(horasInteiras);
+        Console.WriteLine(minutosRestantes);
+
         if (horasInteiras == 0)
         {
             if (minutosRestantes <= 30)
@@ -123,7 +126,7 @@ public IActionResult Calcular(string placa)
         }
         else
         {
-            fracoesCobradas = horasInteiras * 2;
+            fracoesCobradas = horasInteiras;
              
             if (minutosRestantes > 10)
             {
@@ -135,7 +138,6 @@ public IActionResult Calcular(string placa)
         decimal valorPagar = fracoesCobradas * valorDaFracao;
 
         carro.duracao = duracao;
-        carro.preco = valorDaFracao;
         carro.valor = valorPagar;
         carro.tempo_cobrado = (int)fracoesCobradas;
 
