@@ -65,6 +65,7 @@ public IActionResult CadastroEntrada(string placa)
         return NotFound();
 
     carro.hora_entrada = DateTime.Now;
+    carro.preco = pegarPreco(carro.hora_entrada);
     _context.SaveChanges();
 
     return Ok(carro);
@@ -107,40 +108,36 @@ public IActionResult Calcular(string placa)
 
         int horasInteiras = (int)(totalMinutos / 60);
         double minutosRestantes = totalMinutos % 60;
-        int fracoesCobradas = 0;
+        decimal fracoesCobradas = 0;
 
-        if (horasInteiras== 0)
+        if (horasInteiras == 0)
         {
             if (minutosRestantes <= 30)
             {
-                fracoesCobradas = 1;
+                fracoesCobradas = 0.5m;
             }
             else
             {
-                fracoesCobradas = 2;
+                fracoesCobradas = 1;
             }
         }
         else
         {
             fracoesCobradas = horasInteiras * 2;
              
-            if (minutosRestantes > 10 && minutosRestantes <= 30)
+            if (minutosRestantes > 10)
             {
                 fracoesCobradas += 1;
             }
-            else if (minutosRestantes > 30)
-            {
-                fracoesCobradas += 2;
-            }
         }
 
-        decimal valorDaFracao = 1.00m;
+        decimal valorDaFracao = (decimal)carro.preco;
         decimal valorPagar = fracoesCobradas * valorDaFracao;
 
         carro.duracao = duracao;
-        carro.preco = 2;
+        carro.preco = valorDaFracao;
         carro.valor = valorPagar;
-        carro.tempo_cobrado = fracoesCobradas;
+        carro.tempo_cobrado = (int)fracoesCobradas;
 
         _context.SaveChanges();
 
@@ -151,6 +148,19 @@ public IActionResult Calcular(string placa)
             FracoesCobradas = fracoesCobradas,
             ValorTotal = valorPagar 
         });
+    }
+
+    public decimal pegarPreco(DateTime data)
+    {
+        var preco_vigente = _context.TabelaPrecos.FirstOrDefault(p => p.data_inicio <= data && p.data_fim >= data);
+
+        if (preco_vigente == null)
+        {
+            Console.WriteLine($"Tabela de preco para a data nao foi encontrada");
+            return 0;
+        }
+
+        return preco_vigente.valor;
     }
 
 

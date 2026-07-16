@@ -2,42 +2,49 @@
     ViewData["Title"] = "Gerenciador de Estacionamento";
 }
 
+<div>
 <form asp-action="CadastroCarro" method="post">
     <label for="placa">Digite a placa:</label>
-    <input type="text" id="placa" name="placa"/>
-    <button type="submit" class="button">Registrar Carro</button>
+    <div class="input-group mb-3">
+        <input class="form-control" type="text" id="placa" name="placa" maxlength="8"/>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary">Registrar Carro</button>
+        </div>
+    </div>
 </form>
 
 @model List<CarroModel>
 
-<table>
+<table class="table table-dark table-striped">
     <tr>
             <td>Registrar: </td>
-            <td>|| Placa</td>
-            <td>|| Hora de Entrada</td>
-            <td>|| Horada de Saida</td>
-            <td>|| Duracao</td>
-            <td>|| Tempo cobrado</td>
-            <td>|| Preco</td>
-            <td>|| Valor a Pagar</td>
+            <td>Placa</td>
+            <td>Hora de Entrada</td>
+            <td>Horada de Saida</td>
+            <td>Duracao</td>
+            <td>Tempo cobrado em horas</td>
+            <td>Preco</td>
+            <td>Valor a Pagar</td>
     </tr>
     @foreach (var carro in Model)
     {
         <tr>
 <td>
-    <button onclick="registrarHora('@carro.num_placa', 'Entrada')">Entrada</button>
-    <button onclick="registrarHora('@carro.num_placa', 'Saida')">Saída</button>
+    <button class="btn btn-light" onclick="registrarHora('@carro.num_placa', 'Entrada')">Entrada</button>
+    <button class="btn btn-light" onclick="registrarHora('@carro.num_placa', 'Saida')">Saída</button>
 </td>
-            <td>|| @carro.num_placa</td>
-            <td>|| @carro.hora_entrada</td>
-            <td>|| @carro.hora_saida</td>
-            <td>|| @carro.duracao</td>
-            <td>|| @carro.tempo_cobrado</td>
-            <td>|| @carro.preco</td>
-            <td>|| @carro.valor</td>
+            <td>@carro.num_placa</td>
+            <td>@carro.hora_entrada</td>
+            <td>@carro.hora_saida</td>
+            <td>@carro.duracao</td>
+            <td>@carro.tempo_cobrado</td>
+            <td>R$ @carro.preco</td>
+            <td>R$ @carro.valor</td>
         </tr>
     }
 </table>
+
+</div>
 
 <script>
 async function registrarHora(placa, tipo) {

@@ -10,4 +10,5 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<CarroModel> Carros { get; set; }
+    public DbSet<TabelaPrecoModel> TabelaPrecos { get; set; }
 }
