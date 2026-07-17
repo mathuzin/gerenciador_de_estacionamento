@@ -38,10 +38,10 @@
                 @foreach (var preco in Model)
                 {
                     <tr>
-                        <td>@preco.valor_inicial</td>
-                        <td>@preco.valor_adicional</td>
-                        <td>@preco.data_inicio.ToShortDateString()</td>
-                        <td>@preco.data_fim.ToShortDateString()</td>
+                        <td>@(preco.valor_inicial != null ? preco.valor_inicial : "-")</td>
+                        <td>@(preco.valor_adicional != null ? preco.valor_adicional : "-")</td>
+                        <td>@(preco.data_inicio != null ? preco.data_inicio.ToShortDateString() : "-")</td>
+                        <td>@(preco.data_fim != null ? preco.data_fim.ToShortDateString() : "-")</td>
                     </tr>
                 }
             </table>

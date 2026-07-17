@@ -33,10 +33,10 @@
     <button class="btn btn-light" onclick="registrarHora('@carro.num_placa', 'Entrada')">Entrada</button>
     <button class="btn btn-light" onclick="registrarHora('@carro.num_placa', 'Saida')">Saída</button>
 </td>
-            <td>@carro.num_placa</td>
-            <td>@carro.hora_entrada</td>
-            <td>@carro.hora_saida</td>
-            <td>@carro.duracao</td>
+            <td>@(carro.num_placa != null ? carro.num_placa : "-")</td>
+            <td>@(carro.hora_entrada != null ? carro.hora_entrada: "-")</td>
+            <td>@(carro.hora_saida != null ? carro.hora_saida: "-")</td>
+            <td>@(carro.duracao != null ? carro.duracao: "-")</td>
             <td>@(carro.tempo_cobrado != null ? carro.tempo_cobrado : "-")</td>
             <td>@(carro.preco != null ? carro.preco.valor_inicial.ToString("C") : "-")</td>
             <td>@(carro.valor.HasValue ? carro.valor.Value.ToString("C") : "-")</td>
