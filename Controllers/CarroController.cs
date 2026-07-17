@@ -133,6 +133,7 @@ public IActionResult Calcular(string placa)
         carro.duracao = duracao;
         carro.valor = valorPagar;
         carro.preco_id = preco_vigente.id;
+        carro.tempo_cobrado = (int)totalMinutos / 60;
 
         _context.SaveChanges();
 

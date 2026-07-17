@@ -8,7 +8,7 @@
     <div class="input-group mb-3">
         <input class="form-control" type="text" id="placa" name="placa" maxlength="8"/>
         <div class="input-group-append">
-            <button type="submit" class="btn btn-outline-secondary">Registrar Carro</button>
+            <button type="submit" class="btn btn-light">Registrar Carro</button>
         </div>
     </div>
 </form>
@@ -37,7 +37,7 @@
             <td>@carro.hora_entrada</td>
             <td>@carro.hora_saida</td>
             <td>@carro.duracao</td>
-            <td>@carro.tempo_cobrado</td>
+            <td>@(carro.tempo_cobrado != null ? carro.tempo_cobrado : "-")</td>
             <td>@(carro.preco != null ? carro.preco.valor_inicial.ToString("C") : "-")</td>
             <td>@(carro.valor.HasValue ? carro.valor.Value.ToString("C") : "-")</td>
         </tr>

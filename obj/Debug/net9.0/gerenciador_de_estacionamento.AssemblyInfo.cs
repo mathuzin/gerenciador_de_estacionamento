@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("gerenciador_de_estacionamento")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d32256490cdcd71277095a2c4ea81b0316cccc4b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9982a6f5d1384d77a442435354fde1f6a9b4d3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("gerenciador_de_estacionamento")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gerenciador_de_estacionamento")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

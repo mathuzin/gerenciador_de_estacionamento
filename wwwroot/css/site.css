@@ -17,8 +17,30 @@ html {
   min-height: 100%;
 }
 
+:root {
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --accent-color: #4caf50;
+    --border-color: #333333;
+}
+
 body {
-  margin-bottom: 60px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface-color);
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    text-align: left;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
