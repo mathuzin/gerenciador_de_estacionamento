@@ -110,7 +110,6 @@ C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\scopedcss\bundle\gerenciador_de_estacionamento.styles.css
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\scopedcss\projectbundle\gerenciador_de_estacionamento.bundle.scp.css
-C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\compressed\hfoc294kny-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\compressed\l7bovfgzfw-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\compressed\6d1ywd6vis-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\compressed\vvb6j9qql3-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -186,3 +185,4 @@ C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\gerenciador_de_estacionamento.genruntimeconfig.cache
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\ref\gerenciador_de_estacionamento.dll
 C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\gerenciador_de_estacionamento.sourcelink.json
+C:\Users\mathe\OneDrive\Documentos\gerenciador_de_estacionamento\obj\Debug\net9.0\compressed\hfoc294kny-{0}-qqrgtxd7l9-qqrgtxd7l9.gz

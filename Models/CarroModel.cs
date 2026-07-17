@@ -13,8 +13,10 @@ public class CarroModel
 
     public TimeSpan? duracao { get; set;}
 
-    public Int32? tempo_cobrado { get; set;}
+    public int? tempo_cobrado { get; set;}
 
-    public Decimal? preco{ get; set;}
+    public int? preco_id{ get; set;}
+    [ForeignKey("preco_id")]
+    public TabelaPrecoModel? preco{ get; set;}
     public Decimal? valor{ get; set;}
 }

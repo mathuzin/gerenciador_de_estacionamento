@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using gerenciador_de_estacionamento.Models;
 using gerenciador_de_estacionamento.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace gerenciador_de_estacionamento.Controllers;
 
@@ -23,7 +24,7 @@ public class CarroController: Controller
     
 public IActionResult Index()
 {
-    var carros = _context.Carros.ToList();
+    var carros = _context.Carros.Include(c => c.preco).ToList();
     return View(carros);
 }
 
@@ -65,7 +66,6 @@ public IActionResult CadastroEntrada(string placa)
         return NotFound();
 
     carro.hora_entrada = DateTime.Now;
-    carro.preco = pegarPreco(carro.hora_entrada);
     _context.SaveChanges();
 
     return Ok(carro);
@@ -101,45 +101,38 @@ public IActionResult Calcular(string placa)
             return BadRequest(new { mensagem = "Datas de entrada ou saída inválidas para este veículo."});
         }
 
+        var preco_vigente = pegarPreco(carro.hora_entrada);
+        if (preco_vigente == null)
+        {
+            return BadRequest(new { mensagem = "Nenhuma tabela de preco vigente para a data cadastrada"});
+        }
+
         var duracao = carro.hora_saida - carro.hora_entrada;
         double totalMinutos = duracao.Value.TotalMinutes;
-
         if (totalMinutos < 1) totalMinutos = 1;
 
-        int horasInteiras = (int)(totalMinutos / 60);
-        double minutosRestantes = totalMinutos % 60;
-        decimal fracoesCobradas = 0;
+        decimal valorPagar;
 
-        Console.WriteLine(horasInteiras);
-        Console.WriteLine(minutosRestantes);
-
-        if (horasInteiras == 0)
+        if (totalMinutos <= 30)
         {
-            if (minutosRestantes <= 30)
-            {
-                fracoesCobradas = 0.5m;
-            }
-            else
-            {
-                fracoesCobradas = 1;
-            }
+            valorPagar = preco_vigente.valor_inicial / 2;
         }
         else
         {
-            fracoesCobradas = horasInteiras;
-             
-            if (minutosRestantes > 10)
-            {
-                fracoesCobradas += 1;
-            }
-        }
+            double extra_minutos = totalMinutos - 60;
+            int horas_adicionais = 0;
 
-        decimal valorDaFracao = (decimal)carro.preco;
-        decimal valorPagar = fracoesCobradas * valorDaFracao;
+            if (extra_minutos > 10)
+            {
+                horas_adicionais = (int)Math.Ceiling((extra_minutos - 10) / 60);
+            }
+
+            valorPagar = preco_vigente.valor_inicial + (horas_adicionais * preco_vigente.valor_adicional);
+        }
 
         carro.duracao = duracao;
         carro.valor = valorPagar;
-        carro.tempo_cobrado = (int)fracoesCobradas;
+        carro.preco_id = preco_vigente.id;
 
         _context.SaveChanges();
 
@@ -147,22 +140,20 @@ public IActionResult Calcular(string placa)
         {
             Carro = carro,
             MinutosPermanencia = totalMinutos,
-            FracoesCobradas = fracoesCobradas,
             ValorTotal = valorPagar 
         });
     }
 
-    public decimal pegarPreco(DateTime data)
+    public TabelaPrecoModel? pegarPreco(DateTime data)
     {
         var preco_vigente = _context.TabelaPrecos.FirstOrDefault(p => p.data_inicio <= data && p.data_fim >= data);
 
         if (preco_vigente == null)
         {
             Console.WriteLine($"Tabela de preco para a data nao foi encontrada");
-            return 0;
         }
 
-        return preco_vigente.valor;
+        return preco_vigente;
     }
 
 

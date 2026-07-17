@@ -1,0 +1,35 @@
+@model List<TabelaPrecoModel>
+
+<form asp-action="Cadastrar" method="post">
+    <label>Valor hora inicial:</label>
+    <input type="number" step="0.01" name="valor_hora_inicial" />
+
+    <label>Valor hora adicional:</label>
+    <input type="number" step="0.01" name="valor_hora_adicional" />
+
+    <label>Início vigência:</label>
+    <input type="date" name="data_inicio" />
+
+    <label>Fim vigência:</label>
+    <input type="date" name="data_fim" />
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+<table class="table table-dark table-striped">
+    <tr>
+        <td>Hora Inicial</td>
+        <td>Hora Adicional</td>
+        <td>Início</td>
+        <td>Fim</td>
+    </tr>
+    @foreach (var preco in Model)
+    {
+        <tr>
+            <td>@preco.valor_inicial</td>
+            <td>@preco.valor_adicional</td>
+            <td>@preco.data_inicio.ToShortDateString()</td>
+            <td>@preco.data_fim.ToShortDateString()</td>
+        </tr>
+    }
+</table>

@@ -38,8 +38,8 @@
             <td>@carro.hora_saida</td>
             <td>@carro.duracao</td>
             <td>@carro.tempo_cobrado</td>
-            <td>R$ @carro.preco</td>
-            <td>R$ @carro.valor</td>
+            <td>@(carro.preco != null ? carro.preco.valor_inicial.ToString("C") : "-")</td>
+            <td>@(carro.valor.HasValue ? carro.valor.Value.ToString("C") : "-")</td>
         </tr>
     }
 </table>
